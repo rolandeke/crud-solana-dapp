@@ -5,108 +5,200 @@
  * IDL can be found at `target/idl/test_app.json`.
  */
 export type TestApp = {
-  address: '5npb22qaS4eHN6njpLZpUxPKwG4jaaVAhrDdWQ37Q85F';
-  metadata: {
-    name: 'testApp';
-    version: '0.1.0';
-    spec: '0.1.0';
-    description: 'Created with Anchor';
-  };
-  instructions: [
+  "address": "5hwxVjB6cSGMEFGCMMDVSz8QLYHynfU4YecWaq89STNM",
+  "metadata": {
+    "name": "testApp",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
     {
-      name: 'close';
-      discriminator: [98, 165, 201, 177, 108, 65, 206, 96];
-      accounts: [
+      "name": "createEntry",
+      "discriminator": [
+        248,
+        207,
+        142,
+        242,
+        66,
+        162,
+        150,
+        16
+      ],
+      "accounts": [
         {
-          name: 'payer';
-          writable: true;
-          signer: true;
-        },
-        {
-          name: 'testApp';
-          writable: true;
-        }
-      ];
-      args: [];
-    },
-    {
-      name: 'decrement';
-      discriminator: [106, 227, 168, 59, 248, 27, 150, 101];
-      accounts: [
-        {
-          name: 'testApp';
-          writable: true;
-        }
-      ];
-      args: [];
-    },
-    {
-      name: 'increment';
-      discriminator: [11, 18, 104, 9, 104, 174, 59, 33];
-      accounts: [
-        {
-          name: 'testApp';
-          writable: true;
-        }
-      ];
-      args: [];
-    },
-    {
-      name: 'initialize';
-      discriminator: [175, 175, 109, 31, 13, 152, 155, 237];
-      accounts: [
-        {
-          name: 'payer';
-          writable: true;
-          signer: true;
-        },
-        {
-          name: 'testApp';
-          writable: true;
-          signer: true;
-        },
-        {
-          name: 'systemProgram';
-          address: '11111111111111111111111111111111';
-        }
-      ];
-      args: [];
-    },
-    {
-      name: 'set';
-      discriminator: [198, 51, 53, 241, 116, 29, 126, 194];
-      accounts: [
-        {
-          name: 'testApp';
-          writable: true;
-        }
-      ];
-      args: [
-        {
-          name: 'value';
-          type: 'u8';
-        }
-      ];
-    }
-  ];
-  accounts: [
-    {
-      name: 'testApp';
-      discriminator: [135, 64, 223, 168, 233, 143, 162, 215];
-    }
-  ];
-  types: [
-    {
-      name: 'testApp';
-      type: {
-        kind: 'struct';
-        fields: [
-          {
-            name: 'count';
-            type: 'u8';
+          "name": "journalEntry",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "title"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
           }
-        ];
-      };
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "deleteEntry",
+      "discriminator": [
+        227,
+        198,
+        83,
+        191,
+        70,
+        23,
+        194,
+        58
+      ],
+      "accounts": [
+        {
+          "name": "journalEntry",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "title"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "updateEntry",
+      "discriminator": [
+        70,
+        47,
+        181,
+        2,
+        1,
+        40,
+        2,
+        92
+      ],
+      "accounts": [
+        {
+          "name": "journalEntry",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "title"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "newMessage",
+          "type": "string"
+        }
+      ]
     }
-  ];
+  ],
+  "accounts": [
+    {
+      "name": "journalEntryState",
+      "discriminator": [
+        113,
+        86,
+        110,
+        124,
+        140,
+        14,
+        58,
+        66
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "journalEntryState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "name": "entryId",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
 };

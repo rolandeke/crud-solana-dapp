@@ -14,9 +14,9 @@ export default function TestAppFeature() {
   return publicKey ? (
     <div>
       <AppHero
-        title="TestApp"
+        title="First Solana CRUD App"
         subtitle={
-          'Create a new account by clicking the "Create" button. The state of a account is stored on-chain and can be manipulated by calling the program\'s methods (increment, decrement, set, and close).'
+          'Create a new account by clicking the "Create New Entry" button..'
         }
       >
         <p className="mb-6">

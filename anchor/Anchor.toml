@@ -2,11 +2,11 @@
 anchor_version = "0.30.1"
 
 [features]
-seeds = false
+resolution = true
 skip-lint = false
 
 [programs.localnet]
-test_app = "5npb22qaS4eHN6njpLZpUxPKwG4jaaVAhrDdWQ37Q85F"
+test_app = "5hwxVjB6cSGMEFGCMMDVSz8QLYHynfU4YecWaq89STNM"
 
 [registry]
 url = "https://api.apr.dev"
